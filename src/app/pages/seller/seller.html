@@ -1,0 +1,94 @@
+<div class="all">
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">📦</div>
+      <div class="logo-text">
+        <h1>InventoryPro</h1>
+        <p>Point de vente</p>
+      </div>
+    </div>
+
+    <div class="nav-menu">
+      <div class="nav-item" routerLink="ventes">
+        <div class="nav-icon"></div>
+        <span>Ventes</span>
+      </div>
+      <div class="nav-item" routerLink="voirproduits">
+        <div class="nav-icon"></div>
+        <span>Voir Produits</span>
+      </div>
+
+      <div class="nav-item" routerLink="tousventes">
+        <div class="nav-icon"></div>
+        <span>Toute les Ventes</span>
+      </div>
+    </div>
+
+    <div class="user-info">
+      <div class="user-details">
+        <h4>{{ name }}</h4>
+        <p>{{ emailUser }}</p>
+      </div>
+    </div>
+    <div class="logout">
+      <span>🚪</span>
+      <span (click)="Deconnexion()">Déconnexion</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <div>
+        <h1>Point de vente</h1>
+        <p>Créez des ventes et générez des factures</p>
+      </div>
+      <div class="Buttons">
+        <div
+          class="client-info"
+          (click)="!buttonDisabled && openClientForm()"
+          [class.disabled]="buttonDisabled"
+        >
+          <span>👤</span>
+          <span *ngIf="client == null">Ajouter un Client</span>
+          <span *ngIf="client !== null">{{ client.email }}</span>
+        </div>
+
+        <div class="modal" *ngIf="showClientForm">
+          <div class="modal-content">
+            <span class="close" (click)="closeClientForm()">&times;</span>
+            <h2>Informations client</h2>
+            <p>Saisissez les informations du client pour cette vente</p>
+
+            <form (ngSubmit)="searchClient()" #clientForm="ngForm">
+              <label>Email</label>
+              <input type="email" [(ngModel)]="email" name="email" />
+
+              <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+              <div *ngIf="successMessage" class="success">
+                {{ successMessage }}
+              </div>
+
+              <div class="form-actions">
+                <button type="button" (click)="closeClientForm()">
+                  Annuler
+                </button>
+                <button
+                  type="submit"
+                  [disabled]="!clientForm.form.valid || loadingClient"
+                >
+                  <span *ngIf="!loadingClient">Search</span>
+                  <span *ngIf="loadingClient">Searching...</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Bouton pour ouvrir -->
+
+      <!-- Modal affiché si showClientForm = true -->
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>

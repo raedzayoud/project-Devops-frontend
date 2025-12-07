@@ -1,0 +1,109 @@
+.all {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 2vh auto;
+  padding: 0;
+  height: 100vh;
+  margin-left: 20vw;
+  width: 100%;
+}
+
+header {
+  background: #1e5631;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.report-container {
+  width: 90%;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  flex: 1;
+  margin: 0 10px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-left: 5px solid #105713;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.card h3 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.card p {
+  font-size: 22px;
+  font-weight: bold;
+  color: #105713;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead tr {
+  background: #1e5631; /* vert foncé */
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: 14px 12px;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* lignes alternées */
+}
+
+tbody tr:hover {
+  background-color: #eaf7ea; /* hover en vert clair */
+}
+
+td {
+  color: #333;
+}
+
+tfoot {
+  background: #f1f1f1;
+  font-weight: bold;
+  text-align: right;
+}
+footer {
+  color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

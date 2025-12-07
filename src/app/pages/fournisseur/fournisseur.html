@@ -1,0 +1,109 @@
+<div class="container-all">
+  <div class="header">
+    <h2>
+      <div class="header-icon">
+        <i class="fas fa-truck"></i>
+      </div>
+      Liste des Fournisseurs
+    </h2>
+    <button class="btn-add pulse" (click)="openClientForm()">
+      <i class="fas fa-plus"></i>
+      Ajouter Fournisseur
+    </button>
+
+    <!-- Modal -->
+    <div class="modal" *ngIf="showClientForm">
+      <div class="modal-content">
+        <span class="close" (click)="closeClientForm()">&times;</span>
+        <h2>Ajouter Fournisseur</h2>
+        <p>Entrez les informations du nouveau fournisseur</p>
+
+        <!-- ✅ Utilisation de ngSubmit -->
+        <form (ngSubmit)="ajouterFournisseur()">
+          <label for="fournisseurName">Nom du Fournisseur</label>
+          <input
+            id="fournisseurName"
+            name="fournisseurName"
+            type="text"
+            placeholder="Ex: HP"
+            [(ngModel)]="name"
+          />
+
+          <label for="phoneFournisseur">Téléphone du Fournisseur</label>
+          <input
+            id="phoneFournisseur"
+            name="phoneFournisseur"
+            type="text"
+            placeholder="Ex: 27740388"
+            [(ngModel)]="phone"
+          />
+
+          <button type="submit" class="btn-submit">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <!-- Statistiques -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number">{{ fournisseurModel.length }}</div>
+        <div class="stat-label">Total Fournisseurs</div>
+      </div>
+      <div
+        class="stat-card"
+        style="background: linear-gradient(135deg, #10b981 0%, #059669 100%)"
+      >
+        <div class="stat-number">{{ fournisseurModel.length }}</div>
+        <div class="stat-label">Actifs</div>
+      </div>
+      <div
+        class="stat-card"
+        style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
+      >
+        <div class="stat-number">0</div>
+        <div class="stat-label">En attente</div>
+      </div>
+    </div>
+
+    <!-- Barre de recherche -->
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Rechercher un fournisseur..."
+        [(ngModel)]="searchText"
+      />
+    </div>
+
+    <!-- Tableau des fournisseurs -->
+    <div class="table-wrapper">
+      <table id="suppliersTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Téléphone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fournisseur of fournisseurModel">
+            <td>{{ fournisseur.id }}</td>
+            <td class="supplier-name">{{ fournisseur.nom }}</td>
+            <td>
+              <div class="contact-info">
+                <i class="fas fa-phone contact-icon"></i>
+                {{ fournisseur.phone }}
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="fournisseurModel.length === 0">
+            <td colspan="3" class="no-data">Aucun fournisseur trouvé.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

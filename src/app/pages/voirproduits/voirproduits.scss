@@ -1,0 +1,124 @@
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+p.subtitle {
+  color: #6c7a89;
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-add {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h2 {
+  margin: 5px 0;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.card p {
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.product-list {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-list input,
+.product-list select {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+  text-align: left;
+}
+
+th {
+  background: #f9f9f9;
+  color: #34495e;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.stock-faible {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.stock-critique {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.en-stock {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.en-stock {
+  color: white;
+  background-color: green;
+}
+.stock-faible {
+  color: white;
+  background-color: orange;
+}
+.stock-critique {
+  color: white;
+  background-color: red;
+}

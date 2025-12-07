@@ -1,0 +1,47 @@
+<div class="all">
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        📦 InventoryPro <br /><small>Administration</small>
+      </div>
+      <ul class="nav">
+        <li
+          [class.active]="activeLink === 'tableau'"
+          (click)="setActive('tableau')"
+        >
+          Tableau de bord
+        </li>
+        <li
+          [class.active]="activeLink === 'produit'"
+          (click)="setActive('produit')"
+        >
+          Produits
+        </li>
+        <li
+          [class.active]="activeLink === 'categorie'"
+          (click)="setActive('categorie')"
+        >
+          Catégories
+        </li>
+        <li
+          [class.active]="activeLink === 'fournisseur'"
+          (click)="setActive('fournisseur')"
+        >
+          Fournisseurs
+        </li>
+
+        <li
+          [class.active]="activeLink === 'rapport'"
+          (click)="setActive('rapport')"
+        >
+          Rapports
+        </li>
+      </ul>
+    </div>
+    <div class="user-section">
+      <div class="logout" (click)="Deconnexion()">⏻ Déconnexion</div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

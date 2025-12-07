@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>Gestion des produits</h1>
+      <p class="subtitle">
+        Gérez votre inventaire et suivez les niveaux de stock
+      </p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats" *ngIf="!loading">
+    <div class="card">
+      <p>Total produits</p>
+      <h2>{{ totalProduit }}</h2>
+    </div>
+    <div class="card">
+      <p>Stock faible</p>
+      <h2>{{ stockFaible }}</h2>
+    </div>
+    <div class="card">
+      <p>Stock critique</p>
+      <h2>{{ stockCritique }}</h2>
+    </div>
+    <div class="card">
+      <p>Valeur stock</p>
+      <h2>€{{ valeurStock }}</h2>
+    </div>
+  </div>
+
+  <!-- Liste -->
+  <div class="product-list">
+    <h3>Liste des produits</h3>
+    <input type="text" placeholder="Rechercher par nom ou fournisseur..." />
+    <select>
+      <option>Toutes les catégories</option>
+      <option>Électronique</option>
+      <option>Informatique</option>
+    </select>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Catégorie</th>
+          <th>Fournisseur</th>
+          <th>Prix</th>
+          <th>Stock</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produits">
+          <td>{{ produit.name }}</td>
+          <td>{{ produit.categoryName }}</td>
+          <td>{{ produit.supplierName }}</td>
+          <td>€{{ produit.price }}</td>
+          <td>{{ produit.stock }}</td>
+          <td>
+            <span class="status" [ngClass]="getStatutClass(produit.stock)">
+              {{ getStatut(produit.stock) }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

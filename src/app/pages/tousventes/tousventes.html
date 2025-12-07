@@ -1,0 +1,21 @@
+<div class="all">
+  <h1>📦 Liste des ventes</h1>
+
+  <ul class="users">
+    <!-- Loop over clients -->
+    <li *ngFor="let client of getUniqueClient()">
+      <div class="username">👤 Utilisateur : {{ client }}</div>
+
+      <ul class="products">
+        <!-- Loop over ventes of this client -->
+        <li *ngFor="let vente of getVentesByClient(client)">
+          <span class="product-name">{{ vente.product_name }}</span>
+          <div class="price-quantity">
+            <span class="quantity">x{{ vente.quantity }}</span>
+            <span class="price">€{{ vente.product_price }}</span>
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

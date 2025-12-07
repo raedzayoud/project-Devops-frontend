@@ -1,0 +1,105 @@
+<div class="content">
+  <div class="product-selection">
+    <h2 class="section-title">Sélection des produits</h2>
+    <p class="section-subtitle">
+      Recherchez et ajoutez des produits à la vente
+    </p>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Rechercher un produit..."
+      />
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let product of products">
+        <div class="product-header">
+          <div>
+            <div class="product-name">{{ product.name }}</div>
+          </div>
+          <div
+            class="stock-badge"
+            [ngClass]="{
+              'stock-low': product.stock <= 5,
+              'stock-medium': product.stock > 5 && product.stock <= 20,
+              'stock-high': product.stock > 20
+            }"
+          >
+            Stock: {{ product.stock }}
+          </div>
+        </div>
+
+        <div class="product-footer">
+          <div class="product-price">€{{ product.price }}</div>
+          <button class="add-btn" (click)="addToCart(product)">
+            <span class="plus-icon">+</span>
+            <span>Ajouter</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="content-panier">
+    <div class="panier-header">
+      <div class="panier-title">
+        🛒 Panier
+        <span class="panier-count">{{ cart.length }}</span>
+      </div>
+      <button class="clear-btn" (click)="clearCart()">Vider</button>
+    </div>
+
+    <div class="panier-items">
+      <div *ngIf="cart.length === 0" class="panier-empty">
+        <div class="panier-empty-icon">🛍️</div>
+        <p>Votre panier est vide</p>
+        <p>Ajoutez des produits pour commencer</p>
+      </div>
+
+      <div *ngFor="let item of cart" class="panier-item">
+        <div class="item-info">
+          <div class="item-name">{{ item.product.name }}</div>
+          <div class="item-price">€{{ item.product.price }}</div>
+        </div>
+
+        <div class="item-controls">
+          <div class="quantity-controls">
+            <button class="qty-btn" (click)="decreaseQwuantity(item)">-</button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button class="qty-btn" (click)="increaseQwuantity(item)">+</button>
+          </div>
+          <button class="remove-btn" (click)="removeItem(item)">✖</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panier-summary">
+      <div class="summary-row total">
+        <span>Total:</span>
+        <span>€{{ total.toFixed(2) }}</span>
+      </div>
+
+      <!-- error message -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        class="checkout-btn"
+        (click)="savePanier()"
+        [disabled]="cart.length === 0"
+      >
+        💳 Procéder au paiement
+      </button>
+    </div>
+  </div>
+  <div class="modal-overlay" *ngIf="successMessage">
+    <div class="modal-content">
+      <h3>{{ successMessage }}</h3>
+      <button class="close-btn" (click)="successMessage = ''">Fermer</button>
+    </div>
+  </div>
+</div>

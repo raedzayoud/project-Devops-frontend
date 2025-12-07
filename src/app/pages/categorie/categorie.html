@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>📂 Liste des Catégories</h1>
+
+  <!-- Bouton Ajouter une catégorie -->
+  <button class="btn add" (click)="openClientForm()">
+    ➕ Ajouter une catégorie
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="showClientForm">
+    <div class="modal-content">
+      <span class="close" (click)="closeClientForm()">&times;</span>
+      <h2>Ajouter Catégorie</h2>
+      <p>Entrez le nom de la nouvelle catégorie</p>
+
+      <!-- ✅ Form lié à ngSubmit -->
+      <form (ngSubmit)="ajouterCategorie()">
+        <label for="categorieName">Nom de la catégorie</label>
+        <input
+          id="categorieName"
+          name="categorieName"
+          type="text"
+          placeholder="Ex: Informatique"
+          [(ngModel)]="name"
+        />
+
+        <button type="submit" class="btn-submit">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Table des catégories -->
+  <div class="table-wrapper">
+    <table class="category-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom de la catégorie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categorie of categorieModel">
+          <td>{{ categorie.id }}</td>
+          <td>{{ categorie.nom }}</td>
+        </tr>
+        <tr *ngIf="categorieModel.length === 0">
+          <td colspan="2" class="no-data">Aucune catégorie trouvée.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

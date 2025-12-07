@@ -1,0 +1,57 @@
+<div class="main">
+  <div class="header">
+    <div>
+      <h1>Tableau de bord</h1>
+      <p class="subtitle">Vue d'ensemble de votre activité commerciale</p>
+    </div>
+    <div class="update-time">
+      Dernière mise à jour <br />
+      Il y a 5 minutes
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h2>24</h2>
+      <p>
+        Ventes du jour <br /><span class="positive"
+          >+12% par rapport à hier</span
+        >
+      </p>
+    </div>
+    <div class="card">
+      <h2>€15,240</h2>
+      <p>Chiffre d'affaires <br /><span class="positive">+8% ce mois</span></p>
+    </div>
+    <div class="card">
+      <h2>1,247</h2>
+      <p>
+        Produits en stock <br /><span class="negative"
+          >3 alertes stock faible</span
+        >
+      </p>
+    </div>
+    <div class="card">
+      <h2>89</h2>
+      <p>
+        Clients actifs <br /><span class="positive"
+          >+5 nouveaux cette semaine</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>📈 Évolution des ventes</h3>
+    <p>Ventes et revenus des 6 derniers mois</p>
+
+    <canvas
+      baseChart
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+      chartType="line"
+    >
+    </canvas>
+  </div>
+</div>

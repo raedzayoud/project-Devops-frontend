@@ -1,0 +1,199 @@
+.signup-all {
+  background-color: #f1f5f9; /* gris clair */
+  min-height: 99vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Wrapper */
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Container principal */
+.signup-container {
+  max-height: 89vh;
+  display: flex;
+  flex-direction: column; /* pour centrer l'icône + form */
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 30%;
+  padding: 30px;
+  background-color: #e6f6f9; /* gris clair */
+  max-width: 450px; /* prevents it from being too wide */
+  min-width: 300px; /* keeps it usable */
+}
+
+/* Cercle icône */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #164e63; /* bleu foncé */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto; /* centré + espace en bas */
+}
+
+.icon-circle i {
+  color: white;
+  font-size: 28px;
+}
+
+/* Titre */
+.signup-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #0f3c4c;
+  font-weight: bold;
+}
+
+/* Champs */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #0f3c4c;
+  box-shadow: 0 0 4px rgba(15, 60, 76, 0.3);
+}
+
+/* Messages d'erreur */
+.error small {
+  font-size: 12px;
+  color: #d93025;
+}
+
+/* Bouton */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #0f3c4c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #14586b;
+}
+
+button[disabled] {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Lien vers Login */
+.login-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.login-link a {
+  color: #0f3c4c;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #164e63; /* bleu foncé */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* centré horizontalement */
+}
+
+.icon-circle i {
+  color: white;
+  font-size: 28px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .signup-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    width: 70%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .signup-form h1 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    width: 100%; /* full width on mobile */
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

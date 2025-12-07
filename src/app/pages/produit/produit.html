@@ -1,0 +1,108 @@
+<div class="container">
+  <h1>📦 Liste des Produits</h1>
+
+  <!-- Bouton Ajouter un produit -->
+  <button class="btn add" (click)="openClientForm()">
+    ➕ Ajouter un produit
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="showClientForm">
+    <div class="modal-content">
+      <span class="close" (click)="closeClientForm()">&times;</span>
+      <h2>Ajouter Produit</h2>
+      <p>Entrez les informations de la nouvelle produit</p>
+
+      <form (ngSubmit)="ajouterProduit()">
+        <label for="produitName">Nom du produit</label>
+        <input
+          id="produitName"
+          name="produitName"
+          type="text"
+          [(ngModel)]="newProduit.name"
+          placeholder="Ex: Pc Hp"
+          required
+        />
+
+        <label for="price">Prix</label>
+        <input
+          id="price"
+          name="price"
+          type="number"
+          [(ngModel)]="newProduit.price"
+          placeholder="Ex: 400"
+          required
+        />
+
+        <label for="stock">Stock</label>
+        <input
+          id="stock"
+          name="stock"
+          type="number"
+          [(ngModel)]="newProduit.stock"
+          placeholder="Ex: 2"
+          required
+        />
+
+        <label for="categorie">Catégorie</label>
+        <select
+          id="categorie"
+          name="categorie"
+          [(ngModel)]="newProduit.categoryId"
+          required
+        >
+          <option
+            *ngFor="let categorie of categorieModel"
+            [value]="categorie.id"
+          >
+            {{ categorie.nom }}
+          </option>
+        </select>
+
+        <label for="fournisseur">Fournisseur</label>
+        <select
+          id="fournisseur"
+          name="fournisseur"
+          [(ngModel)]="newProduit.supplierId"
+          required
+        >
+          <option
+            *ngFor="let fournisseur of fournisseurModel"
+            [value]="fournisseur.id"
+          >
+            {{ fournisseur.nom }}
+          </option>
+        </select>
+
+        <button type="submit" class="btn-submit">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Table des produits -->
+  <div class="table-wrapper">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Nom du produit</th>
+          <th>Prix</th>
+          <th>Stock</th>
+          <th>Fournisseur</th>
+          <th>Catégorie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produitModel">
+          <td>{{ produit.name }}</td>
+          <td>{{ produit.price }} €</td>
+          <td>{{ produit.stock }}</td>
+          <td>{{ produit.supplierName }}</td>
+          <td>{{ produit.categoryName }}</td>
+        </tr>
+        <tr *ngIf="produitModel.length === 0">
+          <td colspan="5" class="no-data">Aucun produit trouvé.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

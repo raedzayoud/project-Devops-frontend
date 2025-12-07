@@ -1,0 +1,49 @@
+<div class="all">
+  <header>
+    <h1>📊 Rapport des Ventes - Août 2025</h1>
+  </header>
+
+  <div class="report-container">
+    <!-- Résumé -->
+    <div class="summary">
+      <div class="card">
+        <h3>Total Ventes</h3>
+        <p>{{ getTotalVente() }} DT</p>
+      </div>
+      <div class="card">
+        <h3>Nombre de Produits Vendus</h3>
+        <p>{{ getTotalProduitsVendus() }}</p>
+      </div>
+      <div class="card">
+        <h3>Clients Servis</h3>
+        <p>{{ clientCount }}</p>
+      </div>
+    </div>
+
+    <!-- Tableau détaillé -->
+
+    <h2>Détails des ventes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Catégorie</th>
+          <th>Quantité</th>
+          <th>Prix Unitaire</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rapport of rapportModel">
+          <td>{{ rapport.produitName }}</td>
+          <td>{{ rapport.categorie }}</td>
+          <td>{{ rapport.quantity }}</td>
+          <td>{{ rapport.price }} DT</td>
+          <td>{{ rapport.totalPrice }} DT</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>Rapport généré automatiquement le 27 Août 2025.</footer>
+</div>
