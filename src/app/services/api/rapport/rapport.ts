@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RapportService {
-  baseUrl: string = 'http://127.0.0.1:8080/api/';
+  baseUrl: string = 'http://192.168.56.3:8090/api/';
 
   constructor(private http: HttpClient) {}
 
