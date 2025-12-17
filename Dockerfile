@@ -1,29 +1,38 @@
+# Build stage
 FROM node:20 AS builder
 WORKDIR /app
 
-# Copier les fichiers de dépendances
+# Copy package files
 COPY package*.json ./
 
-# Installation avec gestion des erreurs
+# Install dependencies
 RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
 
-# Copier le code source
+# Copy source code
 COPY . .
 
-# Build de l'application
-RUN npm run build -- --configuration production
+# FAST BUILD - Remove production optimization
+RUN npm run build -- \
+    --output-path=dist \
+    --optimization=false \
+    --build-optimizer=false
 
-# Stage de production
-FROM node:20-alpine
-WORKDIR /app
+# Production stage
+FROM nginx:alpine
 
-# Copier les fichiers buildés
-COPY --from=builder /app/dist ./dist
+# Copy built files
+COPY --from=builder /app/dist/Sales-invoice-management/browser /usr/share/nginx/html/
 
-# Installer serve globalement
-RUN npm install -g serve
+# Configure nginx for Angular routing
+RUN echo 'server { \
+    listen 4200; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    location / { \
+        try_files $uri $uri/ /index.html; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 4200
 
-# Démarrer l'application
-CMD ["serve", "-s", "dist/Sales-invoice-management/browser", "-l", "4200"]
+CMD ["nginx", "-g", "daemon off;"]
