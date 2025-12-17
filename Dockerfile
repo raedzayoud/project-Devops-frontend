@@ -1,22 +1,29 @@
-FROM node:latest AS builder
-
+FROM node:18 AS builder
 WORKDIR /app
 
+# Copier les fichiers de dépendances
 COPY package*.json ./
-RUN npm install
 
+# Installation avec gestion des erreurs
+RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+
+# Copier le code source
 COPY . .
-RUN npm run build
 
-FROM node:alpine
+# Build de l'application
+RUN npm run build -- --configuration production
 
+# Stage de production
+FROM node:18-alpine
 WORKDIR /app
 
+# Copier les fichiers buildés
 COPY --from=builder /app/dist ./dist
 
+# Installer serve globalement
 RUN npm install -g serve
 
 EXPOSE 4200
 
-# Utiliser le bon nom avec majuscule
+# Démarrer l'application
 CMD ["serve", "-s", "dist/Sales-invoice-management/browser", "-l", "4200"]
