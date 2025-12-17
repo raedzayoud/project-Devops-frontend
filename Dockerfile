@@ -1,4 +1,4 @@
-FROM node:18 AS builder
+FROM node:20 AS builder
 WORKDIR /app
 
 # Copier les fichiers de dépendances
@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build -- --configuration production
 
 # Stage de production
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 
 # Copier les fichiers buildés
