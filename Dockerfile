@@ -11,11 +11,10 @@ RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
 # Copy source code
 COPY . .
 
-# FAST BUILD - Remove production optimization
+# FAST BUILD - Just disable optimization
 RUN npm run build -- \
     --output-path=dist \
-    --optimization=false \
-    --build-optimizer=false
+    --optimization=false
 
 # Production stage
 FROM nginx:alpine
